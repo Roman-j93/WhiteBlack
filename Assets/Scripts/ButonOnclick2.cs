@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ButonOnclick2 : MonoBehaviour
@@ -10,6 +11,7 @@ public class ButonOnclick2 : MonoBehaviour
         
         WhiteBlackShader.GetComponent<Renderer>().material.SetInt("Type", 0);
         GetComponent<Shader>();
+        OnClickButton();
     }
 
     // Update is called once per frame
@@ -17,9 +19,10 @@ public class ButonOnclick2 : MonoBehaviour
     {
         
     }
-    void OnClickButton()
+    public void OnClickButton()
     {
-        if (TypeBlackWhite == 3) TypeBlackWhite = 0;
+        Debug.Log("asd");
+        if (TypeBlackWhite == 3) TypeBlackWhite = 1;
         int TypeForShader = TypeBlackWhite + 1;
         WhiteBlackShader.GetComponent<Renderer>().material.SetInt("Type", TypeForShader);
     }
