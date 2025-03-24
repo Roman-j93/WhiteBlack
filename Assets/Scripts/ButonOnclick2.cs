@@ -8,7 +8,7 @@ public class ButonOnclick2 : MonoBehaviour
     public Shader WrongBlackWhite;
 
     Material cashMat;
-    int TypeBlackWhite = 0;
+    //int TypeBlackWhite = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,7 +55,6 @@ public class ButonOnclick2 : MonoBehaviour
                 break;
 
         }
-        TypeBlackWhite++;
     }
     
 }
