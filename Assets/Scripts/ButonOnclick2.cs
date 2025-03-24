@@ -6,15 +6,15 @@ public class ButonOnclick2 : MonoBehaviour
     public GameObject TargetSprite;
     public Shader NormalColor;
     public Shader WrongBlackWhite;
-    public Shader PalBlackWhite;
+
+    Material cashMat;
     int TypeBlackWhite = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-        TargetSprite.GetComponent<Renderer>().material.SetInt("Type", 0);
-        GetComponent<Shader>();
-        OnClickButton();
+
+        cashMat = TargetSprite.GetComponent<Renderer>().material;
+        //OnClickButton();
     }
 
     // Update is called once per frame
@@ -22,27 +22,40 @@ public class ButonOnclick2 : MonoBehaviour
     {
         
     }
-    public void OnClickButton()
+    public void OnClickButton(int TypeShade)
     {
-        Debug.Log("asd");
-        if (TypeBlackWhite == 3) TypeBlackWhite = 0;
        
-        switch(TypeBlackWhite)
+        switch(TypeShade)
         {
             case 0:
-                TargetSprite.GetComponent<Renderer>().material.shader = NormalColor;
+                cashMat.shader = NormalColor;
                 break;
 
             case 1:
-                TargetSprite.GetComponent<Renderer>().material.shader = WrongBlackWhite;
+                cashMat.shader = WrongBlackWhite;
+                cashMat.SetFloat("_RatioR", 0.333f);
+                cashMat.SetFloat("_RatioG", 0.333f);
+                cashMat.SetFloat("_RatioB", 0.333f);
                 break;
             case 2:
-                TargetSprite.GetComponent<Renderer>().material.shader = PalBlackWhite;
+                cashMat.shader = WrongBlackWhite;
+                cashMat.SetFloat("_RatioR", 0.299f);
+                cashMat.SetFloat("_RatioG", 0.587f);
+                cashMat.SetFloat("_RatioB", 0.114f);
                 break;
+
+            case 3:
+                cashMat.shader = WrongBlackWhite;
+                cashMat.SetFloat("_RatioR", 0.0216f);
+                cashMat.SetFloat("_RatioG", 0.7125f);
+                cashMat.SetFloat("_RatioB", 0.0722f);
+                break;
+
             default:
                 break;
 
         }
         TypeBlackWhite++;
     }
+    
 }

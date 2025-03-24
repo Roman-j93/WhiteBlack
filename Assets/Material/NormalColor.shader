@@ -3,6 +3,9 @@ Shader "Unlit/NormalColor"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _RatioR  ("Коэффицент красного", float) = 0.333
+        _RatioG  ("Коэффицент зеденого", float) = 0.333
+        _RatioB  ("Коэффицент синего", float) = 0.333
     }
     SubShader
     {
@@ -35,6 +38,10 @@ Shader "Unlit/NormalColor"
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
+            fixed _RatioR;
+            fixed _RatioG;
+            fixed _RatioB;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -50,6 +57,8 @@ Shader "Unlit/NormalColor"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
+                fixed pal = (col.x*_RatioR+col.y*_RatioG+col.z*_RatioB);
+                col = fixed4(pal,pal,pal,1);
                 return col;
             }
             ENDCG

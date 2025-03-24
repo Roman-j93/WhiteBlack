@@ -3,7 +3,6 @@ Shader "Unlit/NewUnlitShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _TypeS ("Type", int) = 1
     }
     SubShader
     {
@@ -35,7 +34,6 @@ Shader "Unlit/NewUnlitShader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            int _TypeS;
 
             v2f vert (appdata v)
             {
@@ -52,10 +50,7 @@ Shader "Unlit/NewUnlitShader"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                
-                fixed4 ne = (10,10,10,10);
-                ne = (col.x+col.y+col.z)/(int)_TypeS;
-                return ( ne);
+                return col;
             }
             ENDCG
         }
