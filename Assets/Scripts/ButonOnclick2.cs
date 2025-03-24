@@ -46,7 +46,7 @@ public class ButonOnclick2 : MonoBehaviour
 
             case 3:
                 cashMat.shader = WrongBlackWhite;
-                cashMat.SetFloat("_RatioR", 0.0216f);
+                cashMat.SetFloat("_RatioR", 0.216f);
                 cashMat.SetFloat("_RatioG", 0.7125f);
                 cashMat.SetFloat("_RatioB", 0.0722f);
                 break;
