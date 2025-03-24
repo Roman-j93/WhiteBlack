@@ -11,7 +11,7 @@ public class ButonOnclick2 : MonoBehaviour
         
         WhiteBlackShader.GetComponent<Renderer>().material.SetInt("Type", 0);
         GetComponent<Shader>();
-        OnClickButton();
+        //OnClickButton();
     }
 
     // Update is called once per frame
